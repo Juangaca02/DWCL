@@ -1,42 +1,29 @@
 
-var limiteInferior = 1;
-var limiteSuperior = 100;
-var ran = Math.round(Math.random() * (limiteSuperior - limiteInferior));
+let limiteInferior = 1;
+let limiteSuperior = 100;
+const ran = Math.round(Math.random() * (limiteSuperior - limiteInferior));
 
-function acierto(n) {
-    if (n == ran) {
-        document.write("El numero que has es el correcto ");
-    } else {
-        if (n < ran) {
-            document.write("El numero que has introducido es menor");
-        } else {
-            document.write("El numero que has introducido es mayor");
-        }
-    }
-
-
-
-
-    document.write(ran);
-}
-
-const numeroAleatorio = Math.floor(Math.random() * 100) + 1;
-let intentos = 0;
-
-function acierto2(n) {
+function acierto() {
+    let contador = 0;
+    let n = 0;
     do {
-        intentos++;
-        if (n < 1 || n > 100) {
-            alert("Por favor, introduce un número válido entre 1 y 100.");
-        } else {
-            if (n == numeroAleatorio) {
-                document.write(`¡Felicidades, has adivinado el número ${numeroAleatorio} en ${intentos} intentos!`);
-            } else if (intentos >= 10) {
-
-            }
+        n = prompt(`El numero esta entre ${limiteInferior} y ${limiteSuperior}`)
+        if (n == ran) {
+            alert("El numero que has es el correcto ");
         }
-
-
-        } while (intentos == 10);
-
+        if (n < ran) {
+            alert("El numero que has introducio es menor");
+            contador++;
+            limiteInferior = n;
+        }
+        if (n > ran) {
+            alert("El numero que has introsucio es mayor");
+            contador++;
+            limiteSuperior = n;
+        }
+    } while (contador == 10 || a != ran);
+    if (contador >= 10) {
+        alert(`Has perdido. El numero era ${ran}`);
     }
+}
+acierto()
