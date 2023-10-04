@@ -9,7 +9,7 @@ array.forEach((valor) => {
         mayor = valor
     }
 })
-document.write(`El texto mayor es; ${mayor}`)
+document.write(`El texto mayor es: ${mayor}`)
 
 array.forEach((num) => {
     if ((typeof (num) === 'number')) {
