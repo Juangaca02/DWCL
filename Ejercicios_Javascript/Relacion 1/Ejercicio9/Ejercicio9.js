@@ -6,10 +6,12 @@ const ran = Math.round(Math.random() * (limiteSuperior - limiteInferior));
 function acierto() {
     let contador = 0;
     let n = 0;
+    let cont2 = 0;
     do {
         n = prompt(`El numero esta entre ${limiteInferior} y ${limiteSuperior}`)
         if (n == ran) {
             alert("El numero que has es el correcto ");
+            cont2 = 1;
         }
         if (n < ran) {
             alert("El numero que has introducio es menor");
@@ -21,9 +23,12 @@ function acierto() {
             contador++;
             limiteSuperior = n;
         }
-    } while (contador == 10 || a != ran);
-    if (contador >= 10) {
+    } while (contador == 10 && cont2 == 1);
+    alert("Has ganado");
+    if (contador = 10) {
         alert(`Has perdido. El numero era ${ran}`);
     }
+    
+
 }
 acierto()
