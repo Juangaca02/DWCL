@@ -27,45 +27,44 @@ class ListaProductos {
     }
 }
 
-class Factura {
-    constructor(importeTotal, pago) {
+class Informacion {
+    constructor(importeTotal, formaPago) {
         this.importeTotal = importeTotal
-        this.pago = pago
+        this.formaPago = formaPago
     }
-
-    calculartotal() {
-        let importeTotal = 0
-        for (let producto of listaProduc) {
-            importeTotal += producto.precio * producto.cantidad
-        }
-    }
-
-    mostrartotal(){
-        console.log(`El importe total de la factura es: ${this.informacion.importeTotal}`)
-    }
-
 }
 
-let empresa = new Empresa('TechCorp', 'Calle de las Tecnologías 123', '912345678', 'A12345678')
+class Factura {
+    constructor(empresa, cliente, productos, informacion) {
+        this.empresa = empresa
+        this.cliente = cliente
+        this.productos = productos
+        this.informacion = informacion
+    }
 
-let cliente = new Cliente('001', '12345678A', 'Juan Pérez', 'Calle de las Flores 123', '28001', 'Madrid', 'Madrid')
+    calcularImporteTotal() {
+        let total = 0
+        this.productos.forEach(producto => {
+            total += producto.precio * producto.cantidad
+        })
+        this.informacion.importeTotal = total
+    }
 
-let listaProduc = [
-    new ListaProductos('Pino', 10, 5),
-    new ListaProductos('Aguayo', 20, 3),
-    new ListaProductos('Adri', 30, 2)
+    mostrarImporteTotal() {
+        console.log(`El importe total de la factura es: ${this.informacion.importeTotal}`)
+    }
+}
+
+const empresa = new Empresa('TechCorp', 'Calle de las Tecnologías 123', '912345678', 'A12345678')
+const cliente = new Cliente('001', '12345678A', 'Juan Pérez', 'Calle de las Flores 123', '28001', 'Madrid', 'Madrid')
+const productos = [
+    new ListaProductos(`Pantalla`, 10, 2),
+    new ListaProductos(`Cables`, 15, 1)
 ]
+const informacion = new Informacion(0, `Visa`)
 
+const factura = new Factura(empresa, cliente, productos, informacion)
 
-
-let factura = new Factura(importeTotal, 'Efectivo')
-
-document.write(Factura.this.im)
-
-
-
-
-
-
-
+factura.calcularImporteTotal()
+factura.mostrarImporteTotal()
 
