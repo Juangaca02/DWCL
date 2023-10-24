@@ -52,6 +52,7 @@ class Factura {
 
     mostrarImporteTotal() {
         console.log(`El importe total de la factura es: ${this.informacion.importeTotal}`)
+        document.write(`El importe total de la factura es: ${this.informacion.importeTotal}`)
     }
 }
 
