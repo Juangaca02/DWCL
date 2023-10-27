@@ -1,0 +1,67 @@
+body {
+    max-width: 800px;
+    margin: 0 auto;
+    /* Centrar el contenedor en la página */
+    text-align: center;
+    /* Al poner el texto en al centro en el body, se aplica a toda la pagina */
+}
+
+/* Comienzo de las Clases de HTML */
+header {
+    background-color: #d90700;
+}
+
+h1 {
+    margin: 0;
+}
+
+img {
+    width: 400px;
+    /* Establece un ancho máximo del 100% para que la imagen sea receptiva */
+    height: auto;
+    /* Mantiene la proporción original de la imagen */
+}
+
+footer {
+    background-color: aqua;
+}
+
+/* Fin de las Clases de HTML */
+
+.imagespeque {
+    width: 100px;
+}
+
+.menu {
+    background-color: chartreuse;
+}
+
+.box {
+    display: flex;
+}
+
+.contenedor {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.elemento {
+    width: 200px;
+    background-color: #0074d9;
+    color: #ffffff;
+    text-align: center;
+}
+
+@media (max-width: 800px) {
+    .elemento {
+        width: 100%;
+    }
+
+    .box {
+        display: block;
+    }
+
+    img {
+        display: none;
+    }
+}

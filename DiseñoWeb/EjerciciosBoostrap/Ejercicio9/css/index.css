@@ -1,0 +1,63 @@
+/* Style the list */
+ul.breadcrumb {
+    padding: 10px 16px;
+    list-style: none;
+    background-color: #eee;
+}
+
+/* Display list items side by side */
+ul.breadcrumb li {
+    display: inline;
+    font-size: 18px;
+}
+
+/* Add a slash symbol (/) before/behind each list item */
+ul.breadcrumb li+li:before {
+    padding: 8px;
+    color: black;
+    content: "/\00a0";
+}
+
+/* Add a color to all links inside the list */
+ul.breadcrumb li a {
+    color: #0275d8;
+    text-decoration: none;
+}
+
+/* Add a color on mouse-over */
+ul.breadcrumb li a:hover {
+    color: #01447e;
+    text-decoration: underline;
+}
+
+html {
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+.carousel-item {
+    height: 200px;
+    /* Establece la altura deseada de 200px para cada elemento del carrusel */
+}
+
+.carousel-item img {
+    width: 100%;
+    /* Ancho del 100% para que la imagen se ajuste al contenedor del carrusel */
+    height: 100%;
+    /* Altura del 100% para mantener la proporción original */
+}
+
+/* Estilo para habilitar el desplazamiento horizontal en móvil y tablet */
+.table-responsive {
+    overflow-x: auto;
+}
+
+footer {
+    background-color: #000000;
+}
+
+.enlace {
+    list-style-type: none;
+    text-decoration: none;
+    color: inherit;
+}

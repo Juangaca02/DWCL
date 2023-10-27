@@ -1,0 +1,49 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.cookie-notice {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    display: none;
+    /* Lo ocultamos inicialmente */
+}
+
+.cookie-notice p {
+    margin: 0;
+}
+
+.cookie-accept,
+.cookie-reject {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.cookie-accept:hover,
+.cookie-reject:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo adicional para hacer que el aviso sea visible */
+.cookie-notice.active {
+    display: block;
+}
