@@ -1,31 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fecha</title>
+    <title>Calculadora de años transcurridos</title>
 </head>
 
 <body>
-    <h1>Comprobar cuantos aoshan pasado</h1>
-    Introduce fecha:<input type="text" id="textoInput">
-    <button onclick="invertirTexto()">Comprobar</button>
-    <p>El numero es capicuo? <span id="resultado"></span></p>
-    <script src="Ejercicio.js">
-        const start = Date.now();
-
-        console.log('starting timer...');
-        // Expected output: "starting timer..."
-
-        setTimeout(() => {
-            const millis = Date.now() - start;
-
-            console.log(`seconds elapsed = ${Math.floor(millis / 1000)}`);
-            // Expected output: "seconds elapsed = 2"
-        }, 2000);
-
-    </script>
+    <h1>Calculadora de años transcurridos</h1>
+    Ingrese una fecha:<input type="text" id="fecha" /><br />
+    <button onclick="calcularfecha()">Calcular con function</button>
+    <button onclick="fecha()">Calcular con const</button>
+    <button onclick="escribir(fecha(document.getElementById('fecha').value))">Calcular con const 2 opcion</button>
+    <p id="resultado"></p>
+    <script src="Ejercicio5.js"></script>
 </body>
 
 </html>
