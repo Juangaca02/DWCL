@@ -5,7 +5,7 @@ function invertir(cadena) {
         return palabra.split("").reverse().join("");
         // Convertir la palabra en un arreglo de caracteres(.split), invertir el arreglo(.reverse) y unirlo nuevamente en una cadena(.join)
     });
-    return palabrasInvertidas.join(" ");
+    return palabrasInvertidas.reverse().join(" ");
     //Une las distintas palabras con un espacio entre ellas
 }
 

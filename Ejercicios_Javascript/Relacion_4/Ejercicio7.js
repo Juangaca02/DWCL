@@ -18,4 +18,4 @@ const mayorYMenor = () => {
 const array = generarArray()
 const mayorYMenorResult = mayorYMenor()
 document.write(`El Array generado es: ${array} <br>`)
-document.write(`El numero mayor y menos son: ${mayorYMenorResult.join(' y ')}`)
+document.write(`El numero mayor y menor son: ${mayorYMenorResult.join(' y ')}`)

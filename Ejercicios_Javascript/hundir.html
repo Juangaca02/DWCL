@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hundir la Flota</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #tablero {
+            display: grid;
+            grid-template-columns: repeat(5, 50px);
+            gap: 2px;
+        }
+
+        .celda {
+            width: 50px;
+            height: 50px;
+            border: 1px solid #000;
+            text-align: center;
+            line-height: 50px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="tablero"></div>
+
+    <script>
+        // Crear tablero
+        const tablero = document.getElementById('tablero');
+        const filas = 5;
+        const columnas = 5;
+
+        for (let i = 0; i < filas; i++) {
+            for (let j = 0; j < columnas; j++) {
+                const celda = document.createElement('div');
+                celda.classList.add('celda');
+                celda.dataset.fila = i;
+                celda.dataset.columna = j;
+                celda.textContent = `${i},${j}`;
+                celda.addEventListener('click', manejarClic);
+                tablero.appendChild(celda);
+            }
+        }
+
+        // Colocar barcos aleatorios (puedes personalizar esto)
+        const barcos = [
+            { fila: 1, columna: 1 },
+            { fila: 2, columna: 2 },
+            { fila: 3, columna: 3 },
+        ];
+
+        function manejarClic(evento) {
+            const filaClic = parseInt(evento.target.dataset.fila);
+            const columnaClic = parseInt(evento.target.dataset.columna);
+
+            // Verificar si el clic dio en un barco
+            const barcoClicado = barcos.find(barco => barco.fila === filaClic && barco.columna === columnaClic);
+
+            if (barcoClicado) {
+                alert('¡Has hundido un barco!');
+                // Puedes hacer más cosas aquí, como cambiar el color de la celda para indicar que el barco fue hundido.
+            } else {
+                alert('Agua. Intenta de nuevo.');
+            }
+        }
+    </script>
+
+</body>
+
+</html>
