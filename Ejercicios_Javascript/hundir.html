@@ -1,80 +1,122 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hundir la Flota</title>
     <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
+        /* Estilos básicos para visualizar el tablero */
+        table {
+            border-collapse: collapse;
         }
 
-        #tablero {
-            display: grid;
-            grid-template-columns: repeat(5, 50px);
-            gap: 2px;
-        }
-
-        .celda {
-            width: 50px;
-            height: 50px;
-            border: 1px solid #000;
+        td {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #ccc;
             text-align: center;
-            line-height: 50px;
-            font-size: 18px;
-            cursor: pointer;
         }
     </style>
 </head>
 
 <body>
 
-    <div id="tablero"></div>
+    <h1>Hundir la Flota</h1>
+
+    <table id="tablero">
+        <!-- El tablero se generará dinámicamente con JavaScript -->
+    </table>
 
     <script>
-        // Crear tablero
-        const tablero = document.getElementById('tablero');
-        const filas = 5;
-        const columnas = 5;
+        // Función para crear un tablero vacío
+        function crearTablero(filas, columnas) {
+            let tablero = [];
+            for (let i = 0; i < filas; i++) {
+                let fila = [];
+                for (let j = 0; j < columnas; j++) {
+                    fila.push("🟦"); // '0' representa agua
+                }
+                tablero.push(fila);
+            }
+            return tablero;
+        }
 
-        for (let i = 0; i < filas; i++) {
-            for (let j = 0; j < columnas; j++) {
-                const celda = document.createElement('div');
-                celda.classList.add('celda');
-                celda.dataset.fila = i;
-                celda.dataset.columna = j;
-                celda.textContent = `${i},${j}`;
-                celda.addEventListener('click', manejarClic);
-                tablero.appendChild(celda);
+
+        // Función para mostrar el tablero en la página
+        function mostrarTableroHTML(tablero) {
+            let table = document.getElementById('tablero');
+            for (let i = 0; i < tablero.length; i++) {
+                let row = table.insertRow();
+                for (let j = 0; j < tablero[i].length; j++) {
+                    let cell = row.insertCell();
+                    cell.innerHTML = tablero[i][j];
+                }
             }
         }
 
-        // Colocar barcos aleatorios (puedes personalizar esto)
-        const barcos = [
-            { fila: 1, columna: 1 },
-            { fila: 2, columna: 2 },
-            { fila: 3, columna: 3 },
-        ];
+        // Función para colocar barcos en el tablero
+        function colocarBarcos(tablero) {
+            for (let index = 0; index < 4; index++) {
+                colocarBarco(tablero, '🛶', 1); // Barco grande
+            }
+            // Barco pequeño
+            for (let index = 0; index < 3; index++) {
+                colocarBarco(tablero, '🚣‍♀️', 2); // Barco grande
+            }
+            for (let index = 0; index < 2; index++) {
+                colocarBarco(tablero, '🚤', 3); // Fregata
+            }
+            colocarBarco(tablero, '🛳', 4); // Portaaviones
 
-        function manejarClic(evento) {
-            const filaClic = parseInt(evento.target.dataset.fila);
-            const columnaClic = parseInt(evento.target.dataset.columna);
+        }
 
-            // Verificar si el clic dio en un barco
-            const barcoClicado = barcos.find(barco => barco.fila === filaClic && barco.columna === columnaClic);
+        // Función para colocar un barco en una posición aleatoria
+        function colocarBarco(tablero, tipoBarco, longitud) {
+            let fila, columna, direccion;
+            do {
+                fila = Math.floor(Math.random() * tablero.length);
+                columna = Math.floor(Math.random() * tablero[0].length);
+                direccion = Math.random() < 0.5 ? 'horizontal' : 'vertical';
+            } while (!esPosicionValida(tablero, fila, columna, longitud, direccion));
 
-            if (barcoClicado) {
-                alert('¡Has hundido un barco!');
-                // Puedes hacer más cosas aquí, como cambiar el color de la celda para indicar que el barco fue hundido.
-            } else {
-                alert('Agua. Intenta de nuevo.');
+            for (let i = 0; i < longitud; i++) {
+                if (direccion === 'horizontal') {
+                    tablero[fila][columna + i] = tipoBarco;
+                } else {
+                    tablero[fila + i][columna] = tipoBarco;
+                }
             }
         }
+
+        // Función para verificar si una posición es válida para colocar un barco
+        function esPosicionValida(tablero, fila, columna, longitud, direccion) {
+            if (direccion === 'horizontal' && columna + longitud > tablero[0].length) {
+                return false; // El barco no cabe en la fila actual
+            }
+
+            if (direccion === 'vertical' && fila + longitud > tablero.length) {
+                return false; // El barco no cabe en la columna actual
+            }
+
+            for (let i = 0; i < longitud; i++) {
+                if (direccion === 'horizontal' && tablero[fila][columna + i] !== '🟦') {
+                    return false; // Hay un barco en esa posición
+                } else if (direccion === 'vertical' && tablero[fila + i][columna] !== '🟦') {
+                    return false; // Hay un barco en esa posición
+                }
+            }
+
+            return true;
+        }
+        // Crear un tablero de 10X10 para empezar
+        let tableroJuego = crearTablero(10, 10);
+
+        // Colocar barcos en el tablero
+        colocarBarcos(tableroJuego);
+
+        // Mostrar el tablero en la página
+        mostrarTableroHTML(tableroJuego);
     </script>
 
 </body>
