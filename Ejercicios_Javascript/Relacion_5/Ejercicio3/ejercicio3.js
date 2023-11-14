@@ -1,40 +1,32 @@
+const boton = document.getElementById("añadir");
+const lista = document.getElementById("diariosDeportivos");
+const texto = document.getElementById("texto");
+const eliminar = document.getElementById("eliminar");
 
-document.addEventListener('DOMContentLoaded', function () {
-    const añadir = document.getElementById("añadir");
+const agregar = () => {
+    const nuevoTexto = texto.value.trim();
 
-    const eliminar = document.getElementById("eliminar");
-    const lista = document.getElementById("diariosdeportivos");
+    if (nuevoTexto !== "") {
+        const nuevoLi = document.createElement("li");
+        nuevoLi.textContent = nuevoTexto;
+        lista.appendChild(nuevoLi);
+        texto.value = "";
+    }
+};
 
-    const marcas = ["Nike", "Adidas", "Apple", "Coca-Cola", "Samsung", "Google", "Amazon", "Microsoft"];
-
-    const valores = document.createElement("li");
-
-    añadir.addEventListener("click", () => {
-        const hola = lista.length
-        console.log(hola)
-
-
-
-        if (marcas.length > 0) {
-            const nuevaMarca = marcas.shift(); // Obtener y eliminar el primer elemento del array
-            valores.textContent = nuevaMarca;
-            lista.appendChild(valores);
-        } else {
-            alert('No hay más marcas para añadir.');
-        }
-
-    });
-
-    eliminar.addEventListener("click", () => {
-        const itemsCount = lista.getElementsByTagName('li').length;
-        if (itemsCount > 0) {
-            lista.removeChild(lista.lastElementChild);
-        } else {
-            alert('La lista está vacía, no se pueden eliminar más elementos.');
-        }
-
-
-    });
+boton.addEventListener("click", () => {
+    agregar();
 });
 
+texto.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") agregar();
+});
 
+eliminar.addEventListener("click", () => {
+    const itemsCount = lista.getElementsByTagName('li').length;
+    if (itemsCount > 0) {
+        lista.removeChild(lista.lastElementChild);
+    } else {
+        alert('La lista está vacía, no se pueden eliminar más elementos.');
+    }
+});
