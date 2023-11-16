@@ -1,4 +1,3 @@
-
 const añadirParrafo = document.getElementById("añadirParrafo")
 const seccion = document.getElementById("texto")
 let parrafos = document.querySelectorAll('p')
