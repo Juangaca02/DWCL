@@ -1,0 +1,11 @@
+.carousel-item {
+    height: 200px;
+    /* Establece la altura deseada de 200px para cada elemento del carrusel */
+}
+
+.carousel-item img {
+    width: 100%;
+    /* Ancho del 100% para que la imagen se ajuste al contenedor del carrusel */
+    height: 100%;
+    /* Altura del 100% para mantener la proporción original */
+}
