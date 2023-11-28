@@ -28,3 +28,20 @@ html {
         }
     }
 }
+
+$spacer: 10rem;
+
+@include media-breakpoint-up(sm) {
+    $spacer: 10rem;
+    $border-radius: 0px !important;
+}
+
+@include media-breakpoint-up(md) {
+    $spacer: 15rem;
+    $border-radius: 0px !important;
+    $font-size-base: 100px !important;
+}
+
+.card-title {
+    font-family: $headings-font-family;
+}

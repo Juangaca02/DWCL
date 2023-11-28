@@ -42,7 +42,7 @@
             </button>
         </div>
         <!-- Cards -->
-        <div class="row m-2">
+        <div class="row m-md-2">
             <div class="col-md-4 mb-3">
                 <div class="card">
                     <img class="card-img-top" src="./assets/img/portfolio/popo.jpg" alt="Card image">

@@ -1,0 +1,4 @@
+Crear un documento HTML con su correspondiente código Javascript que permita poner un fondo de color
+aleatorio a la página cada vez que entremos en la misma (utilizar la propiedad rgb de CSS). Dicha página debe
+pedir un número mediante un mensaje prompt, debiendo indicarnos mediante un mensaje de alerta si realmente
+hemos introducido un número o no.

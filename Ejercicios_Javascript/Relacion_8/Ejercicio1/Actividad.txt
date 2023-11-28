@@ -1,0 +1,4 @@
+Realizar un documento HTML con su correspondiente código javascript similar al mostrado a continuación que
+simule el funcionamiento de una página de autenticación de usuario mediante usuario y password que serían
+“admin” y “1234” respectivamente, de forma que si acertamos nos indique “Bienvenidos al sistema” y si fallamos
+“Usuario y/o contraseña incorrecta”
