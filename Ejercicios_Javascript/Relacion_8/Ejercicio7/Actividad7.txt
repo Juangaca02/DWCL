@@ -1,0 +1,3 @@
+Realizar una aplicación Web que pida un texto y muestre el texto original y el mismo texto cifrado desplazando
+todos los caracteres una misma cantidad obtenida aleatoriamente. Hay que tener en cuenta que detrás de la Z
+vendría de nuevo la A

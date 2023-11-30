@@ -1,0 +1,2 @@
+Realizar una aplicación Web que simule el funcionamiento de una apuesta de la lotería primitiva, mostrando los
+números en su correspondiente tabla con una X. (Ojo: los números no se pueden repetir)

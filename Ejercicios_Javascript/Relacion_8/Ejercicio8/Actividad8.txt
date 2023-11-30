@@ -1,0 +1,2 @@
+Crear un documento HTML con su correspondiente javascript, similar a la mostrada a continuación, de forma
+que si nos ponemos sobre un cuadrado, el fondo de la misma cambie a dicho color
