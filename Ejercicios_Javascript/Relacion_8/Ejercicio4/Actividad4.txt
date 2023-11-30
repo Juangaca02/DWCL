@@ -1,0 +1,2 @@
+Crear una página Web que pida un número entero positivo al usuario (no hace falta validad) y que devuelva el
+factorial de dicho número
