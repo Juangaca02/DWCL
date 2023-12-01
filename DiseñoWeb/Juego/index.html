@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Encontrar Errores</title>
+    <style>
+        #contenedor {
+            position: relative;
+        }
+
+        .diferencia {
+            position: absolute;
+            border: 2px solid red;
+            pointer-events: none;
+            /* Evita que los clics se capturen en las diferencias */
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Juego de Encontrar Errores</h1>
+    <p>Errores encontrados: <span id="contador">0</span></p>
+
+    <div id="contenedor">
+        <img id="imagen1" src="images/647749.png" alt="Imagen Original" width="50%">
+        <img id="imagen2" src="images/647749.png" alt="Imagen con Errores" style="display: none;" width="50%">
+    </div>
+
+    <script>
+        let contadorErrores = 0;
+
+        // Mostrar la segunda imagen al cargar la página
+        window.onload = function () {
+            document.getElementById('imagen2').style.display = 'inline';
+        };
+
+        // Función para manejar clics en la imagen
+        function verificarDiferencia(event) {
+            const contenedor = document.getElementById('contenedor');
+            const rect = contenedor.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+
+            // Crear un elemento div para resaltar la diferencia
+            const diferencia = document.createElement('div');
+            diferencia.className = 'diferencia';
+            diferencia.style.left = x + 'px';
+            diferencia.style.top = y + 'px';
+
+            // Agregar la diferencia al contenedor
+            contenedor.appendChild(diferencia);
+
+            // Incrementar el contador de errores
+            contadorErrores++;
+
+            // Actualizar el contador en la página
+            document.getElementById('contador').textContent = contadorErrores;
+        }
+
+        // Asociar la función de clic con el contenedor
+        document.getElementById('contenedor').addEventListener('click', verificarDiferencia);
+    </script>
+
+</body>
+
+</html>

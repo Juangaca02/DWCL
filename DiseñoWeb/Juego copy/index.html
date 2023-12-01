@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <h2>Encuentra las diferencias</h2>
+
+    <p>Haz clic en las diferencias que encuentres en la imagen de la derecha.</p>
+
+    <img id="img1" src="images/647749.png" alt="Imagen 1" style="width:500px;height:600px;">
+    <img id="img2" src="images/647749.png" alt="Imagen 2" style="width:500px;height:600px;">
+
+    <p id="contador">Errores encontrados: 0</p>
+
+    <script>
+        // Coordenadas de las diferencias (x, y, radio)
+        var diferencias = [[100, 200, 100], [500, 300, 10]];
+
+        document.getElementById("img2").addEventListener("click", function (event) {
+            var x = event.clientX;
+            var y = event.clientY;
+
+            for (var i = 0; i < diferencias.length; i++) {
+                var dx = diferencias[i][0] - x;
+                var dy = diferencias[i][1] - y;
+                var distancia = Math.sqrt(dx * dx + dy * dy);
+
+                if (distancia < diferencias[i][2]) {
+                    // El usuario ha encontrado una diferencia
+                    document.getElementById("contador").innerHTML = "Errores encontrados: " + (i + 1);
+                    // Dibuja un círculo alrededor de la diferencia
+                    var circulo = document.createElement("div");
+                    circulo.style.width = "20px";
+                    circulo.style.height = "20px";
+                    circulo.style.background = "red";
+                    circulo.style.borderRadius = "50%";
+                    circulo.style.position = "absolute";
+                    circulo.style.left = (x - 10) + "px";
+                    circulo.style.top = (y - 10) + "px";
+                    document.body.appendChild(circulo);
+                    break;
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>
