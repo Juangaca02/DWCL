@@ -4,23 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Control de Velocidad</title>
+    <title>Análisis de Texto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+    </style>
 </head>
-<style>
-    body {
-        text-align: center;
-    }
-
-    #speedDisplay {
-        font-size: 24px;
-    }
-</style>
 
 <body>
-    <h1>Pulsa las teclas🔼 y 🔽 </h1><br>
-    <h1 id="velocidad">Velocidad 0</h1>
-
-    <script src="ejercicio13.js"></script>
+    <h1>Análisis de Texto</h1>
+    <label for="texto">Introduce un texto:</label>
+    <textarea id="texto" rows="4" cols="50"></textarea>
+    <br>
+    <button onclick="analizarTexto()">Analizar Texto</button>
+    <script src="ejercicio14.js"></script>
 </body>
 
 </html>

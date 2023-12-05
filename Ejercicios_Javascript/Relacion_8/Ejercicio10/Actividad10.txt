@@ -1,0 +1,2 @@
+Realizar un programa javascript aplicado a un documento html con 10 párrafos de forma que al pulsar un botón
+vaya apareciendo cada uno de los párrafos poco a poco

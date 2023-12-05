@@ -1,0 +1,12 @@
+Crear un objeto de tipo punto que contenga dos propiedades x, e y que representarán a las coordenadas de
+dicho punto.
+a) Realizar el método cambiar al que le pasaremos las nuevas coordenadas, por lo que modificará las coordenadas
+de un punto.
+b) Un método llamado iguales que recibe un segundo punto y aplicado a un primer objeto, nos diga si ambos
+puntos son iguales.
+c) Un método llamado sumar, que recibirá un segundo punto y aplicado a un primer objeto devolverá un tercer
+punto resultado de sumar las dos coordenadas anteriores.
+d) Un método llamado distancia, que recibirá un segundo punto y aplicado a otro punto devolverá la distancia
+entre dichos puntos según la fórmula:
+
+(p1(x1,y1),p2(x2,y2))=  Math.sqrt((x2-x1)2 + (y2-y1))

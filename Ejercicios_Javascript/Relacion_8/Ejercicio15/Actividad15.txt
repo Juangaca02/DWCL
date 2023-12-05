@@ -1,0 +1,5 @@
+Crear los métodos mínimo común múltiplo (mcm) y máximo común divisor (mcd) y agregarlos al prototipo de
+la clase Math, sabiendo que ambos se calculan de la siguiente manera:
+mcd(a,b)=b si el resto de dividir a entre b es 0
+mcd(a,b)=mcd(b,a%b) si el resto de dividir a entre b no es 0.
+mcm(a,b)=a*b/mcd(a,b)

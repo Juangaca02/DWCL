@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Análisis de Texto</title>
+    <style>
+        h1 {
+            margin-left: 125px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Centro educativo ies marques de comares</h1>
+    <div class="container">
+        <div>
+            <h2>Matriculación en el ciclo de grado superior DAW</h2>
+            <form action="">
+                <label for="nombre">Nombre: </label>
+                <input type="text" name="nombre" id="nombre" size="35">
+                <label for="apellidos">Apellidos: </label>
+                <input type="text" name="apellidos" id="apellidos"><br><br>
+                <label for="domicilio">Domicilio: </label>
+                <input type="text" name="domicilio" id="domicilio" size="33" required>
+                <br><br>
+                Sexo:
+                <input type="radio" id="hombre" name="sexos" value="Hombre" checked>
+                <label for="hombre">Hombre:</label>
+                <input type="radio" id="mujer" name="sexos" value="Mujer">
+                <label for="mujer">Mujer:</label>
+                <br><br>
+                <label for="edad">Edad: </label>
+                <input type="number" name="edad" id="edad" min="16" size="10">
+                <br><br>
+                Curso: <select name="curso" id="curso">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </select>
+                <br><br>
+                Modulos en los que se matricula:<br>
+                <input type="checkbox" id="modulo1" name="modulo1" value="entornosDeDesarrollo">
+                <label for="modulo1">Entornos De Desarrollo:</label><br>
+                <input type="checkbox" id="modulo2" name="modulo2" value="basesDeDatos">
+                <label for="modulo2">Bases De Datos:</label><br>
+                <input type="checkbox" id="modulo3" name="modulo3" value="programacion">
+                <label for="modulo3">Programación:</label><br>
+                <input type="checkbox" id="modulo4" name="modulo4" value="Implantación de sistemas operativos">
+                <label for="modulo4">Implantación De Sistemas Operativos:</label><br>
+                <input type="checkbox" id="modulo5" name="modulo5" value="desarrolloWebEntornoCliente">
+                <label for="modulo5">Desarrollo Web En Entorno Cliente:</label><br>
+                <input type="checkbox" id="modulo6" name="modulo6" value="desarrolloWebEntornoServidor">
+                <label for="modulo6">Desarrollo Web En Entorno Servidor:</label><br>
+                <input type="checkbox" id="modulo7" name="modulo7" value="despliegueDeAplicacionesWeb">
+                <label for="modulo7">Despliegue De Aplicaciones Web:</label><br>
+                <input type="checkbox" id="modulo8" name="modulo8" value="desarrolloDeInterfacesWeb">
+                <label for="modulo8">Desarrollo De Interfaces Web:</label><br>
+                <input type="checkbox" id="modulo9" name="modulo9" value="empresaEIniciativaEmprendedora">
+                <label for="modulo9">Empresa E Iniciativa Emprendedora:</label><br>
+                <br>Observaciones:
+                <br><textarea name="observaciones" id="observaciones" cols="50" rows="10"
+                    placeholder="Indique si tiene alguna observación..."></textarea>
+                <br><br>
+                <input type="submit" id="enviarDAW" name="enviarDAW" value="Enviar">
+                <input type="submit" id="restablecerDAW" name="restablecerDAW" value="Restablecer">
+            </form>
+        </div>
+        <div>
+            <h2>Matriculación en el ciclo medio SMR</h2>
+            <form action="">
+                <label for="nombre2">Nombre: </label>
+                <input type="text" name="nombre2" id="nombre2" size="35">
+                <label for="apellidos2">Apellidos: </label>
+                <input type="text" name="apellidos2" id="apellidos2"><br><br>
+                <label for="domicilio" 2>Domicilio: </label>
+                <input type="text" name="domicilio2" id="domicilio2" size="33">
+                <br><br>
+
+                Sexo:
+                <input type="radio" id="hombre2" name="sexos2" value="Hombre2" checked>
+                <label for="hombre2">Hombre:</label>
+                <input type="radio" id="mujer2" name="sexos2" value="Mujer2">
+                <label for="mujer2">Mujer:</label>
+                <br><br>
+                <label for="edad">Edad: </label>
+                <input type="number" name="edad" id="edad" min="16" size="10" required>
+                <br><br>
+                Curso: <select name="curso2" id="curso2">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </select>
+                <br><br>
+                Modulos en los que se matricula:<br>
+                <input type="checkbox" id="modelo1" name="modelo1" value="entornosDeDesarrollo">
+                <label for="modelo1">Entornos De Desarrollo:</label><br>
+                <input type="checkbox" id="modelo2" name="modelo2" value="basesDeDatos">
+                <label for="modelo2">Bases De Datos:</label><br>
+                <input type="checkbox" id="modelo3" name="modelo3" value="programacion">
+                <label for="modelo3">Programación:</label><br>
+                <input type="checkbox" id="modelo4" name="modelo4" value="Implantación de sistemas operativos">
+                <label for="modelo4">Implantación De Sistemas Operativos:</label><br>
+                <input type="checkbox" id="modelo5" name="modelo5" value="desarrolloWebEntornoCliente">
+                <label for="modelo5">Desarrollo Web En Entorno Cliente:</label><br>
+                <input type="checkbox" id="modelo6" name="modelo6" value="desarrolloWebEntornoServidor">
+                <label for="modelo6">Desarrollo Web En Entorno Servidor:</label><br>
+                <input type="checkbox" id="modelo7" name="modelo7" value="despliegueDeAplicacionesWeb">
+                <label for="modelo7">Despliegue De Aplicaciones Web:</label><br>
+                <input type="checkbox" id="modelo8" name="modelo8" value="desarrolloDeInterfacesWeb">
+                <label for="modelo8">Desarrollo De Interfaces Web:</label><br>
+                <input type="checkbox" id="modelo9" name="modelo9" value="empresaEIniciativaEmprendedora">
+                <label for="modelo9">Empresa E Iniciativa Emprendedora:</label><br>
+                <br>Observaciones:
+                <br><textarea name="observaciones2" id="observaciones2" cols="50" rows="10"
+                    placeholder="Indique si tiene alguna observación..."></textarea>
+                <br><br>
+                <input type="submit" id="enviarSMR" name="enviarSMR" value="Enviar">
+                <input type="submit" id="restablecerSMR" name="restablecerSMR" value="Restablecer">
+            </form>
+        </div>
+    </div>
+    <script src="ejercicio18.js"></script>
+</body>
+
+</html>

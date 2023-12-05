@@ -1,0 +1,13 @@
+Crear el objeto fracción e implementar los siguientes métodos:
+a) getNumerador, getDenominador, setNumerador, setDenominador: para obtener y establecer los valores del
+numerador y denominador respectivamente.
+b) Método imprimirfracción: permitirá imprimir la fracción como una cadena de texto num/den
+c) Método simplificar: devolverá la fracción simplificada, sabiendo que ésta resulta de dividir el numerador y
+el denominador por el máximo común divisor entre ellos.
+d) Método multiplicarF que permita multiplicar dos fracciones, sabiendo que el resultado es la multiplicación
+de los numeradores dividido por la multiplicación de los denominadores. Hay que devolver la fracción
+simplificada.
+e) Método dividirF que permita dividir dos fracciones, sabiendo que el numerador resultante es la
+multiplicación del numerador de la primera por el denominador de la segunda y que el denominador
+resultante es la multiplicación del denominador de la primera por el numerador de la segunda. Hay que dar
+la fracción simplificada
