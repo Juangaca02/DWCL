@@ -1,0 +1,4 @@
+Realizar una página HTML con su correspondiente javascript, en la que introduzcamos un texto en un textarea
+y muestre una ventana de salida en la que cuente el número de palabras, indique cuál es la primera y la última
+palabra, muestre todas las palabras del texto al revés, muestre todas las palabras ordenadas alfabéticamente y en
+orden inverso que haya en el cuadro de texto del textarea.

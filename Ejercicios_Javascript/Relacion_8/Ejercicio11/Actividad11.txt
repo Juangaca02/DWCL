@@ -1,0 +1,2 @@
+Realizar un programa javascript aplicado a un documento con 10 párrafos, de los que se muestra únicamente
+la 1º palabra, de forma que al situar el ratón sobre dicha palabra, aparezca el párrafo completo
