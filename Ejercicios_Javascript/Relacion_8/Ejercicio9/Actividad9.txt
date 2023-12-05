@@ -1,0 +1,5 @@
+Realizar un documento HTML con su correspondiente código Javascript que simule un conversor de distancia
+(Km a metros o viceversa) y un conversor de Peso (Kg a gramos o viceversa).
+Hay que tener en cuenta que en cuanto que hagamos clic en uno de los dos cuadros de texto del conversor de peso, el
+otro cuadro de texto debe ponerse en blanco (si es que hubiese algún contenido) y lo mismo para el conversor de distancia.
+Además, hay que comprobar que nos hayan metido al menos un dato para poder convertir.

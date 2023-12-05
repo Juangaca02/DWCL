@@ -27,5 +27,5 @@ function cifrar(texto, desplazamiento) {
 }
 
 function obtenerDesplazamientoAleatorio() {
-    return Math.floor(Math.random() * 25) + 1; // Números aleatorios de 1 a 25
+    return Math.floor(Math.random() * 25) + 1;
 }

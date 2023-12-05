@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor</title>
+</head>
+<style>
+    body {
+        text-align: center;
+        align-items: center;
+    }
+</style>
+
+<body>
+    <h1>Conversor</h1>
+    <hr>
+    <h2>Conversor de km/m e viceversa</h2>
+    <form name=form1>
+        Kilometros<input type="float" name="km" onKeyUp='window.document.form1.m.value=this.value*1000'
+            placeholder="Introduzca la cantidad"><br>
+        Metros<input type="float" name="m" onKeyUp='window.document.form1.km.value=this.value/1000'
+            placeholder="Introduzca la cantidad"><br>
+    </form>
+    <h5>Hecho con Evento onKeyUp</h5>
+    <h2>Conversor de Distancia</h2>
+    <input type="number" id="inputKm-M" placeholder="Introduzca un valor">
+    <select id="selectKm-M">
+        <option value="Km">Km a Metros</option>
+        <option value="M">Metros a Km</option>
+    </select>
+    <input type="submit" id="convertirKm-M" value="Convertir"><br>
+    <textarea name="" id="solucionKm-M" cols="40" rows="1"></textarea>
+
+    <h2>Conversor de Peso</h2>
+    <input type="number" id="inputKg-G" placeholder="Introduzca un valor">
+    <select id="selectKg-G">
+        <option value="Kg">Kg a Gramos</option>
+        <option value="G">Gramos a Kg</option>
+    </select>
+    <input type="submit" id="convertirKg-G" value="Convertir"><br>
+    <textarea name="" id="solucionKg-G" cols="40" rows="1"></textarea>
+    <script src="ejercicio9.js"></script>
+</body>
+
+</html>
