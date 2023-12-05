@@ -1,0 +1,4 @@
+Crear una página Web que tenga un texto centrado en la página, con letra blanca sobre fondo negro en <h1>
+que indique el mensaje “Pulsar Alt+F12 para colocar imagen de fondo”, de modo que al pulsar sobre dicho
+mensaje cambie el fondo de la página a una imagen (dicha imagen puede ser cualquier que descarguéis sin
+derechos de autor).
