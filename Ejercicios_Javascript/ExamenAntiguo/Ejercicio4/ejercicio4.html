@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botones</title>
+</head>
+<style>
+    body {
+        text-align: center;
+        align-items: center;
+    }
+
+    .oculto {
+        display: none;
+    }
+
+    .visible {
+        display: inline;
+    }
+</style>
+
+<body>
+    <input type="submit" value="boton1" id="boton1" onclick="cambiarRojo()">
+    <input type="submit" value="boton1-1" id="boton1-1" onclick="cambiarNomal()">
+    <input type="submit" value="boton2" id="boton2" onclick="mostrartTextArea()">
+    <input type="submit" value="boton3" id="boton3" onclick="mostrarP()">
+    <input type="submit" value="boton4" id="boton4" onclick="invertir()">
+    <input type="submit" value="boton5" id="boton5" onclick="contarCaracteres()"><br>
+    <textarea class="oculto" name="Hola" id="div" cols="30" rows="10"></textarea>
+    <p id="caracteres"></p>
+    <script src="ejercicio4.js"></script>
+</body>
+
+</html>

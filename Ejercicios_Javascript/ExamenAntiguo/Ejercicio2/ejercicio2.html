@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta Poker</title>
+</head>
+
+<body>
+    <h2>Dar Carta</h2>
+    <form id="formulario">
+        Dime una carta:
+        <input type="number" id="palo" placeholder="1-2-3-4" min="1" max="4" required width="10">
+        <input type="number" id="valor" placeholder="1-2-3-4...11-12-13" min="1" max="13" required>
+        <button type="button" onclick="calcular()">Calcular</button>
+    </form>
+    <div id="resultados"></div>
+    <script src="ejercicio2.js"></script>
+
+</body>
+
+</html>
