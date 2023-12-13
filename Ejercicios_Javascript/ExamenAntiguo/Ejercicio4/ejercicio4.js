@@ -26,11 +26,13 @@ function mostrarP() {
 function invertir() {
     const texto = document.querySelector('textarea')
     let palabras = texto.value.split(/\s+/)
-    texto.innerHTML = palabras.map(palabra => palabra.split("").reverse().join("")).join(" ");
+    texto.innerHTML = palabras.reverse().map(palabra => palabra.split("").reverse().join("")).join(" ");
 }
 
 function contarCaracteres() {
     const texto = document.querySelector('textarea')
-    let caracteres = texto.value.split(/\s/g, '');
-    document.getElementById("caracteres").innerHTML = caracteres.length;
+    const caracteres = document.getElementById("caracteres")
+    caracteres.innerHTML += `${texto.value.length} con espacio `
+    let sinEspacio = texto.value.replace(/\s/g, '')
+    caracteres.innerHTML += `${sinEspacio.length} sin espacio`
 }

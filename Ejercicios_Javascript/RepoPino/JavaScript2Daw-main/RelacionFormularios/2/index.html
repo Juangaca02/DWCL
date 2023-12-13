@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Formulario de Nombre y Sexo</title>
+</head>
+<body>
+
+<h2>Formulario de Nombre y Sexo</h2>
+
+<form action="" method="">
+  TextArea:
+  <textarea id="area" name="Comentarios" rows="5" 
+  placeholder="Escriba aquí sus comentarios"
+  title="Un máximo de 100 caracteres" 
+  data-pattern="^.{1,50}$" 
+  required>
+  </textarea>
+  <p id="mas50" style="color: red">Tienes que escribir entre 1 y 50 caracteres</p>
+  <p id="mas100" style="color: red">Mas de 100 caracteres no puedes escribir</p>
+</form>
+<script src="script.js" type="module"></script>
+</body>
+</html>

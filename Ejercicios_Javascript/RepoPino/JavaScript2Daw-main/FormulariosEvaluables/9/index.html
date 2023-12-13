@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Conversor de Distancia y Peso</title>
+  <style>
+    /* Estilos simples para el diseño */
+    input {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Conversor de Distancia y Peso</h1>
+
+  <h2>Conversor de Distancia</h2>
+  <input type="number" id="inputDistancia" placeholder="Ingrese distancia en km o m">
+  <select id="selectDistancia">
+    <option value="metros">Km a Metros</option>
+    <option value="kilometros">Metros a Km</option>
+  </select>
+  <button id="convertirDistancia">Convertir</button>
+  <p id="resultadoDistancia"></p>
+
+  <h2>Conversor de Peso</h2>
+  <input type="number" id="inputPeso" placeholder="Ingrese peso en kg o g">
+  <select id="selectPeso">
+    <option value="gramos">Kg a Gramos</option>
+    <option value="kilogramos">Gramos a Kg</option>
+  </select>
+  <button id="convertirPeso">Convertir</button>
+  <p id="resultadoPeso"></p>
+
+  <script src="script.js"></script>
+</body>
+</html>

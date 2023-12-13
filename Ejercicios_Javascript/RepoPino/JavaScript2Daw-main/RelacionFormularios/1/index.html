@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Formulario de Nombre y Sexo</title>
+</head>
+<body>
+
+<h2>Formulario de Nombre y Sexo</h2>
+
+<form action="" method="">
+  Nombre:
+  <input type="text" id="nombre" name="nombre" placeholder="Escriba aquí su nombre" pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$" required><p id="textoNombre" style="color: red">Escribe tu nombre sin números</p>
+  <br><br>
+
+  Sexo:
+  <input type="radio" id="hombre" name="sexo" value="hombre">
+  Hombre
+  <input type="radio" id="mujer" name="sexo" value="mujer">
+  Mujer
+  <input type="radio" id="otro" name="sexo" value="otro">
+  Otro<br><br>
+  <br>
+  <input type="submit" value="Enviar" id="enviar">
+</form>
+<script src="script.js" type="module"></script>
+</body>
+</html>

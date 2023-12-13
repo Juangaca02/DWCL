@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Formulario de Nombre y Sexo</title>
+</head>
+<body id="body">
+  <form action="/procesar-datos" method="post">
+    <label for="nombre">Nombre:</label><br>
+    <input type="text" id="nombre" name="nombre"><br><br>
+  
+    <label for="edad">Edad:</label><br>
+    <input type="number" id="edad" name="edad" value="500"><br><br>
+  
+    <label for="salario">Salario:</label><br>
+    <input type="number" id="salario" name="salario" value="100"><br><br>
+  
+    <input type="submit" name="enviar" value="Enviar" id="enviar">
+  </form>
+  <div id="campo"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
