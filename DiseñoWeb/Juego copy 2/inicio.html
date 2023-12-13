@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Presentación Inicial</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #6EA637;
+            /* Color de fondo verde claro */
+            color: #ffffff;
+        }
+
+        .pagina {
+            display: flex;
+            height: 100vh;
+        }
+
+        .izquierda {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .formularioDificultad label,
+        .formularioDificultad input {
+            cursor: pointer;
+        }
+
+        .derecha {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .cartel {
+            /* Estilos del cartel (puedes ajustarlos según necesites) */
+            padding: 20px;
+            text-align: center;
+        }
+
+        .imagen {
+            max-height: 700px;
+        }
+
+        .opciones {
+            /* Estilos para el área de opciones */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .boton-naturaleza {
+            background-color: #ffffff;
+            /* Color de fondo verde que evoca la naturaleza */
+            color: #000000;
+            /* Color del texto */
+            padding: 10px 20px;
+            /* Espaciado interno del botón */
+            border: none;
+            /* Sin borde */
+            border-radius: 5px;
+            /* Bordes redondeados */
+            font-size: 16px;
+            /* Tamaño del texto */
+            text-transform: uppercase;
+            /* Texto en mayúsculas */
+            cursor: pointer;
+            /* Cursor al pasar sobre el botón */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            /* Sutil sombra */
+            transition: background-color 0.3s ease;
+            /* Transición suave del color de fondo */
+        }
+
+
+        /* Estilos adicionales para los radio buttons (si lo necesitas) */
+
+        /* Otros estilos... */
+    </style>
+</head>
+
+<body>
+    <div class="pagina">
+        <div class="izquierda">
+            <h1 style="text-align: center;">Oh nooo, las ranas saltonas se han escapado y han invadido el parque</h1>
+            <div class="opciones">
+                <h2>Selecciona la dificultad:</h2>
+                <form class="formularioDificultad" id="formularioDificultad">
+                    <input type="radio" id="facil" name="dificultad" value="2" checked>
+                    <label for="facil">Fácil</label><br>
+                    <input type="radio" id="medio" name="dificultad" value="3">
+                    <label for="medio">Medio</label><br>
+                    <input type="radio" id="dificil" name="dificultad" value="4">
+                    <label for="dificil">Difícil</label><br>
+                    <input type="radio" id="webWorker" name="dificultad" value="6">
+                    <label for="webWorker">WebWorker</label><br>
+                </form>
+            </div>
+            <p>Ayúdame a capturarlas</p>
+            <button class="boton-naturaleza" onclick="enviarDificultad()">Continuar</button>
+        </div>
+        <div class="derecha">
+            <div class="cartel">
+                <img class="imagen" src="ranasSaltonas_upscayl_4x_realesrgan-x4plus.png" alt="">
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function enviarDificultad() {
+            var formulario = document.getElementById('formularioDificultad');
+            var valorSeleccionado = '';
+
+            // Obtener el valor seleccionado del radio button
+            for (var i = 0; i < formulario.length; i++) {
+                if (formulario[i].checked) {
+                    valorSeleccionado = formulario[i].value;
+                    break;
+                }
+            }
+
+            // Redireccionar a otra página y enviar el valor seleccionado como parámetro
+            window.location.href = 'index.html?dificultad=' + valorSeleccionado;
+        }
+    </script>
+</body>
+
+</html>

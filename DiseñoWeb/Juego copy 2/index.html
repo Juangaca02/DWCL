@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Incluye la biblioteca Konva desde el CDN -->
+    <script src="https://unpkg.com/konva@9.2.3/konva.min.js"></script>
+    <meta charset="utf-8" />
+    <title>Demostración del juego de Animales en la Playa con Konva</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #0b4e27;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 650px;
+        }
+
+        #container {
+            border: 2px solid #ccc;
+            background-image: url('images/fondo.png');
+            /* Puedes agregar bordes para visualización */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Contenedor para el lienzo de Konva -->
+    <div id="container"></div>
+    <script>
+
+        // Obtén el ancho y alto de la ventana del navegador
+        var width = window.innerWidth;
+        var height = window.innerHeight;
+
+        // Función para cargar imágenes de origen
+        function loadImages(sources, callback) {
+            var assetDir = 'images/';
+            var images = {};
+            var loadedImages = 0;
+            var numImages = 0;
+            // Cuenta el número de imágenes a cargar
+            for (var src in sources) {
+                numImages++;
+            }
+            // Carga cada imagen y llama al callback cuando todas estén cargadas
+            for (var src in sources) {
+                images[src] = new Image();
+                images[src].onload = function () {
+                    if (++loadedImages >= numImages) {
+                        callback(images);
+                    }
+                };
+                images[src].src = assetDir + sources[src];
+            }
+        }
+
+        // Función para verificar si un animal está cerca de un contorno
+        function isNearOutline(animal, outline) {
+            var a = animal;
+            var o = outline;
+            var ax = a.x();
+            var ay = a.y();
+
+            if (ax > o.x - 20 && ax < o.x + 20 && ay > o.y - 20 && ay < o.y + 20) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        // Función para dibujar el fondo del final
+        function drawBackground(background, beachImg, text) {
+            var context = background.getContext();
+            context.drawImage(beachImg, 0, 0);
+            context.setAttr('font', '20pt Calibri');
+            context.setAttr('textAlign', 'center');
+            context.setAttr('fillStyle', 'white');
+            context.fillText(text, background.getStage().width() / 2, 40);
+        }
+
+        // Función para dibujar el fondo del inicio
+        function drawBackground2(background, beachImg) {
+            var context = background.getContext();
+            context.drawImage(beachImg, 0, 0);
+        }
+
+        // Inicializa el escenario de Konva
+        function initStage(images) {
+            var stage = new Konva.Stage({
+                container: 'container',
+                width: 1200,
+                height: 600,
+            });
+            var background = new Konva.Layer();
+            var animalLayer = new Konva.Layer();
+            var animalShapes = [];
+            var score = 0;
+
+            // Posiciones de las imágenes
+            var animals = {
+                giraffe: {
+                    x: 90,
+                    y: 70,
+                },
+                monkey: {
+                    x: 275,
+                    y: 70,
+                },
+                lion: {
+                    x: 400,
+                    y: 70,
+                },
+                bull: {
+                    x: 600,
+                    y: 70,
+                },
+                elephant: {
+                    x: 400,
+                    y: 100,
+                },
+                dolphin: {
+                    x: 150,
+                    y: 100,
+                },
+            };
+
+            var outlines = {
+                giraffe_black: {
+                    x: 690,
+                    y: 250,
+                },
+                monkey_black: {
+                    x: 300,
+                    y: 420,
+                },
+                lion_black: {
+                    x: 100,
+                    y: 390,
+                },
+                bull_black: {
+                    x: 700,
+                    y: 390,
+                },
+                elephant_black: {
+                    x: 800,
+                    y: 290,
+                },
+                dolphin_black: {
+                    x: 850,
+                    y: 30,
+                },
+            };
+
+            // Crea animales arrastrables
+            for (var key in animals) {
+                // Función anónima para inducir el ámbito
+                (function () {
+                    var privKey = key;
+                    var anim = animals[key];
+
+                    var animal = new Konva.Image({
+                        image: images[key],
+                        x: anim.x,
+                        y: anim.y,
+                        draggable: true,
+                    });
+
+                    animal.on('dragstart', function () {
+                        this.moveToTop();
+                    });
+
+                    // Verifica si el animal está en el lugar correcto y lo ajusta si es así
+                    animal.on('dragend', function () {
+                        var outline = outlines[privKey + '_black'];
+                        if (!animal.inRightPlace && isNearOutline(animal, outline)) {
+                            animal.position({
+                                x: outline.x,
+                                y: outline.y,
+                            });
+                            animal.inRightPlace = true;
+                            /*
+                                                        if (Facil) {
+                                                            if (++score >= 2) {
+                                                                var text = '¡Ganaste! ¡Disfruta de tu botín!';
+                                                                drawBackground(background, images.beach, text);
+                                                            }
+                                                        }
+                                                        if (Medio) {
+                                                            if (++score >= 3) {
+                                                                var text = '¡Ganaste! ¡Disfruta de tu botín!';
+                                                                drawBackground(background, images.beach, text);
+                                                            }
+                                                        }
+                                                        if (Dificl) {
+                                                            if (++score >= 4) {
+                                                                var text = '¡Ganaste! ¡Disfruta de tu botín!';
+                                                                drawBackground(background, images.beach, text);
+                                                            }
+                                                        }
+                                                        if (WebWorkers) {
+                                                            if (++score >= 6) {
+                                                                var text = '¡Ganaste! ¡Disfruta de tu botín!';
+                                                                drawBackground(background, images.beach, text);
+                                                            }
+                                                        }
+                            */
+                            if (++score >= 6) {
+                                var text = '¡Ganaste! ¡Disfruta de tu botín!';
+                                drawBackground(background, images.beach, text);
+                            }
+
+                            // Deshabilita arrastrar y soltar
+                            setTimeout(function () {
+                                animal.draggable(false);
+                            }, 50);
+                        }
+                    });
+
+                    // Hace que el animal resplandezca al pasar el ratón sobre él
+                    animal.on('mouseover', function () {
+                        animal.image(images[privKey + '_glow']);
+                        document.body.style.cursor = 'pointer';
+                    });
+
+                    // Devuelve la imagen del animal al quitar el ratón
+                    animal.on('mouseout', function () {
+                        animal.image(images[privKey]);
+                        document.body.style.cursor = 'default';
+                    });
+
+                    animal.on('dragmove', function () {
+                        document.body.style.cursor = 'pointer';
+                    });
+
+                    animalLayer.add(animal);
+                    animalShapes.push(animal);
+                })();
+            }
+
+            // Crea contornos de animales
+            for (var key in outlines) {
+                // Función anónima para inducir el ámbito
+                (function () {
+                    var imageObj = images[key];
+                    var out = outlines[key];
+
+                    var outline = new Konva.Image({
+                        image: imageObj,
+                        x: out.x,
+                        y: out.y,
+                    });
+
+                    animalLayer.add(outline);
+                })();
+            }
+
+            stage.add(background);
+            stage.add(animalLayer);
+
+
+
+        }
+
+        // Fuentes de las imágenes Modo Facil
+        var sources1 = {
+            beach: 'beach.png',
+            fondo: 'fondo.png',
+            lion: 'lion.png',
+            lion_glow: 'lion-glow.png',
+            lion_black: 'lion-black.png',
+            monkey: 'monkey.png',
+            monkey_glow: 'monkey-glow.png',
+            monkey_black: 'monkey-black.png',
+        };
+
+        // Fuentes de las imágenes Modo Medio
+        var sources2 = {
+            beach: 'beach.png',
+            fondo: 'fondo.png',
+            lion: 'lion.png',
+            lion_glow: 'lion-glow.png',
+            lion_black: 'lion-black.png',
+            monkey: 'monkey.png',
+            monkey_glow: 'monkey-glow.png',
+            monkey_black: 'monkey-black.png',
+            giraffe: 'giraffe.png',
+            giraffe_glow: 'giraffe-glow.png',
+            giraffe_black: 'giraffe-black.png',
+        };
+
+        // Fuentes de las imágenes Modo Facil Dificil
+        var sources3 = {
+            beach: 'beach.png',
+            fondo: 'fondo.png',
+            lion: 'lion.png',
+            lion_glow: 'lion-glow.png',
+            lion_black: 'lion-black.png',
+            monkey: 'monkey.png',
+            monkey_glow: 'monkey-glow.png',
+            monkey_black: 'monkey-black.png',
+            giraffe: 'giraffe.png',
+            giraffe_glow: 'giraffe-glow.png',
+            giraffe_black: 'giraffe-black.png',
+            bull: 'bull.png',
+            bull_glow: 'bull-glow.png',
+            bull_black: 'bull-black.png',
+        };
+
+        // Fuentes de las imágenes Modo WebWorkers
+        var sources = {
+            beach: 'beach.png',
+            fondo: 'fondo.png',
+            lion: 'lion.png',
+            lion_glow: 'lion-glow.png',
+            lion_black: 'lion-black.png',
+            monkey: 'monkey.png',
+            monkey_glow: 'monkey-glow.png',
+            monkey_black: 'monkey-black.png',
+            giraffe: 'giraffe.png',
+            giraffe_glow: 'giraffe-glow.png',
+            giraffe_black: 'giraffe-black.png',
+            bull: 'bull.png',
+            bull_glow: 'bull-glow.png',
+            bull_black: 'bull-black.png',
+            elephant: 'elephant.png',
+            elephant_glow: 'elephant-glow.png',
+            elephant_black: 'elephant-black.png',
+            dolphin: 'dolphin.png',
+            dolphin_glow: 'dolphin-glow.png',
+            dolphin_black: 'dolphin-black.png',
+        };
+
+        // Carga las imágenes y llama a la función de inicialización del escenario
+        loadImages(sources, initStage);
+    </script>
+</body>
+
+</html>

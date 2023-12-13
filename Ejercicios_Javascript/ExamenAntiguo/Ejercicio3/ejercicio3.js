@@ -57,6 +57,4 @@ document.addEventListener('click', e => {
             alert("No puedes hacer un pleno")
         }
     }
-
-
 });
