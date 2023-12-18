@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Gestión Material Deportivo</title>
+    <style>
+        input[type=number] {
+            width: 50px;
+        }
+
+        .visible {
+            display: block;
+        }
+
+        .oculto {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Gestión Material Deportivo IES Marqués de Comares</h1>
+    <hr>
+    <div class="visible" id="Identificación">
+        <h2>Identificación:</h2><br>
+        <label for="Profesor">Profesor</label>
+        <input type="text" id="profesor" required><br>
+        <label for="Password">Contraseña:</label>
+        <input type="password" id="password" required><br>
+        <input type="button" value="Acceder" id="Acceder">
+        <p></p>
+    </div>
+    <div class="oculto" id="Formulario">
+        <table id="recursos">
+            <tr>
+                <h2>Gestión Repuestos Deportivos</h2>
+            </tr>
+            <tr>
+                <form name="formulario" action="#" method="get">
+                    Deporte a gestionar:
+                    <select name="tipoDeporte" id="tipoDeporte">
+                        <option id="Fútbol">Fútbol</option>
+                        <option id="Baloncesto">Baloncesto</option>
+                        <option id="Gimnasia">Gimnasia</option>
+                    </select><br><br>
+                    <!--aquí iría el select si hemos elegido fútbol o baloncesto-->
+                    <div id="opcionesMaterial" class="oculto">
+                        <label for="material">Material:</label>
+                        <select id="material">
+                            <option value="nuevo">Nuevo material</option>
+                            <option value="reposicion">Reposición de material</option>
+                        </select>
+                    </div>
+                    <div id="unidades" class="oculto">
+                        <label for="cantidad">Unidades:</label>
+                        <input type="number" id="cantidad" required min="0">
+                    </div>
+                    <br>
+                    <!-- estas serían las casillas de verificación en caso de elegir gimnasia-->
+                    <label for="gimnasia">Materiales: </label><br>
+                    <input type="checkbox" id="aros" name="aros" value="aros"> Aros<span class="oculto"
+                        id="unidadesAros">&nbsp;&nbsp;Unidades: <input type="text" required></span><br>
+                    <input type="checkbox" id="cinta" name="cinta" value="cintas"> Cintas<span class="oculto"
+                        id="unidadesCinta">&nbsp;&nbsp;Unidades: <input type="text" required></span><br>
+                    <input type="checkbox" id="pesas" name="pesas" value="pesas"> Pesas<span class="oculto"
+                        id="unidadesPesas">&nbsp;&nbsp;Unidades: <input type="text" required></span><br>
+                    <input type="checkbox" id="mancuernas" name="mancuernas" value="mancuernas"> Mancuernas<span
+                        class="oculto" id="unidadesMancuernas">&nbsp;&nbsp;Unidades: <input type="text"
+                            required></span><br>
+                    <br /> <br />
+                    <input type="submit" value="Enviar" id="Enviar">
+                    <input type="reset" id="Limpiar" value="Limpiar">
+                </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script src="Ejercicio1.js"></script>
+</body>
+
+</html>

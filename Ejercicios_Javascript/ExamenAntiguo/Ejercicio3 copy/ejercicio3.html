@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Reservas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        #reserva-info {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gestión de Reservas de Aulas</h1>
+
+    <label for="aulaInput">Aula:</label>
+    <input type="text" id="aulaInput">
+
+    <label for="profesorInput">Profesor:</label>
+    <input type="text" id="profesorInput">
+
+    <label for="diaInput">Día:</label>
+    <input type="text" id="diaInput">
+
+    <label for="horaInput">Hora:</label>
+    <input type="text" id="horaInput">
+
+    <button onclick="realizarReserva()">Realizar Reserva</button>
+    <button onclick="aumentarTiempo()">Aumentar Tiempo</button>
+
+    <div id="reserva-info"></div>
+
+    <script>
+        var aula = null;
+        var profesor = null;
+        var dia = null;
+        var hora = null;
+        var duracion = 1;
+
+        function realizarReserva() {
+            aula = document.getElementById('aulaInput').value;
+            profesor = document.getElementById('profesorInput').value;
+            dia = document.getElementById('diaInput').value;
+            hora = document.getElementById('horaInput').value;
+
+            mostrarReserva();
+        }
+
+        function aumentarTiempo() {
+            var tiempoAumentar = parseFloat(prompt("Ingrese el tiempo a aumentar en horas:"));
+            if (!isNaN(tiempoAumentar)) {
+                if (duracion + tiempoAumentar <= 3.5) {
+                    duracion += tiempoAumentar;
+                    mostrarReserva();
+                    alert("Se ha aumentado el tiempo de reserva.");
+                } else {
+                    alert("No es posible aumentar el tiempo de reserva, se supera el límite máximo de 3.5 horas.");
+                }
+            } else {
+                alert("Ingrese un valor numérico válido.");
+            }
+        }
+
+        function mostrarReserva() {
+            var reservaInfo = document.getElementById('reserva-info');
+            reservaInfo.innerHTML = `
+                <h2>Reserva Actual:</h2>
+                <p><strong>Aula:</strong> ${aula}</p>
+                <p><strong>Profesor:</strong> ${profesor}</p>
+                <p><strong>Día:</strong> ${dia}</p>
+                <p><strong>Hora:</strong> ${hora}</p>
+                <p><strong>Duración:</strong> ${duracion} horas</p>
+            `;
+        }
+    </script>
+</body>
+</html>

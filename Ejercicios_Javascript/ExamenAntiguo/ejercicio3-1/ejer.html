@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo</title>
+    <style>
+        #miParrafo {
+            background-color: red;
+            color: white;
+        }
+
+        .fondo-azul {
+            background-color: blue;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button onclick="ocultarParrafo()">Ocultar</button>
+        <button onclick="crearParrafoAnterior()">Crear párrafo anterior</button>
+        <button onclick="invertirColores()">Invertir colores</button>
+    </div>
+    
+    <p id="miParrafo">Este es un párrafo con fondo rojo y letra blanca.</p>
+
+    <script>
+        let parrafoVisible = true;
+
+        function ocultarParrafo() {
+            const miParrafo = document.getElementById('miParrafo');
+            if (parrafoVisible) {
+                miParrafo.style.display = 'none';
+                parrafoVisible = false;
+            } else {
+                miParrafo.style.display = 'block';
+                parrafoVisible = true;
+            }
+        }
+
+        function crearParrafoAnterior() {
+            const nuevoParrafo = document.createElement('p');
+            nuevoParrafo.textContent = 'Párrafo creado anterior al que había';
+            
+            const primerParrafo = document.getElementById('miParrafo');
+            primerParrafo.parentNode.insertBefore(nuevoParrafo, primerParrafo);
+        }
+
+        function invertirColores() {
+            const miParrafo = document.getElementById('miParrafo');
+            const backgroundColor = miParrafo.style.backgroundColor;
+            const color = miParrafo.style.color;
+
+            miParrafo.style.backgroundColor = color;
+            miParrafo.style.color = backgroundColor;
+        }
+
+        document.addEventListener('dblclick', function() {
+            const miParrafo = document.getElementById('miParrafo');
+            miParrafo.style.display = 'block';
+            parrafoVisible = true;
+        });
+
+        document.addEventListener('keydown', function(event) {
+            const miParrafo = document.getElementById('miParrafo');
+            if (event.shiftKey && event.code === 'F10') {
+                miParrafo.className = 'fondo-azul';
+                miParrafo.textContent = 'Vacío';
+            }
+        });
+    </script>
+</body>
+</html>

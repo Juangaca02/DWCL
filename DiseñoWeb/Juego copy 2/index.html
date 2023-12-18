@@ -11,7 +11,7 @@
             margin: 0;
             padding: 0;
             overflow: hidden;
-            background-color: #0b4e27;
+            background-image: url(./images/pexels-photo-1174183.jpeg);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -29,8 +29,23 @@
 <body>
     <!-- Contenedor para el lienzo de Konva -->
     <div id="container"></div>
+    <audio id="soundLion" src="sounds/lion.mp3"></audio>
+    <audio id="soundMonkey" src="sounds/monkey.mp3"></audio>
+    <audio id="soundElephant" src="sounds/elephant.mp3"></audio>
+    <audio id="soundGiraffe" src="sounds/giraffe.mp3"></audio>
+    <audio id="soundBull" src="sounds/bull.mp3"></audio>
+    <audio id="soundDolphin" src="sounds/dolphin.mp3"></audio>
+    <img id="winGif1" src="images/Gif.gif" style="position: absolute; top: 100; left: 50; display: none;" />
     <script>
 
+        function obtenerParametroUrl(nombre) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(nombre);
+        }
+        var dificultad = obtenerParametroUrl('dificultad');
+        if (dificultad == null) {
+            dificultad = 2;
+        }
         // Obtén el ancho y alto de la ventana del navegador
         var width = window.innerWidth;
         var height = window.innerHeight;
@@ -79,6 +94,10 @@
             context.setAttr('textAlign', 'center');
             context.setAttr('fillStyle', 'white');
             context.fillText(text, background.getStage().width() / 2, 40);
+
+
+            var winGif = document.getElementById('winGif1');
+            winGif.style.display = 'block';
         }
 
         // Función para dibujar el fondo del inicio
@@ -101,56 +120,56 @@
 
             // Posiciones de las imágenes
             var animals = {
+                bull: {
+                    x: 750,
+                    y: 230,
+                },
                 giraffe: {
                     x: 90,
                     y: 70,
                 },
                 monkey: {
-                    x: 275,
-                    y: 70,
-                },
-                lion: {
                     x: 400,
                     y: 70,
                 },
-                bull: {
+                lion: {
                     x: 600,
                     y: 70,
                 },
                 elephant: {
-                    x: 400,
-                    y: 100,
+                    x: 970,
+                    y: 80,
                 },
                 dolphin: {
-                    x: 150,
-                    y: 100,
+                    x: 280,
+                    y: 200,
                 },
             };
 
             var outlines = {
+                bull_black: {
+                    x: 20,
+                    y: 480,
+                },
                 giraffe_black: {
-                    x: 690,
-                    y: 250,
+                    x: 900,
+                    y: 330,
                 },
                 monkey_black: {
-                    x: 300,
-                    y: 420,
+                    x: 390,
+                    y: 450,
                 },
                 lion_black: {
-                    x: 100,
-                    y: 390,
-                },
-                bull_black: {
-                    x: 700,
-                    y: 390,
+                    x: 250,
+                    y: 490,
                 },
                 elephant_black: {
-                    x: 800,
-                    y: 290,
+                    x: 530,
+                    y: 405,
                 },
                 dolphin_black: {
-                    x: 850,
-                    y: 30,
+                    x: 740,
+                    y: 420,
                 },
             };
 
@@ -181,35 +200,29 @@
                                 y: outline.y,
                             });
                             animal.inRightPlace = true;
-                            /*
-                                                        if (Facil) {
-                                                            if (++score >= 2) {
-                                                                var text = '¡Ganaste! ¡Disfruta de tu botín!';
-                                                                drawBackground(background, images.beach, text);
-                                                            }
-                                                        }
-                                                        if (Medio) {
-                                                            if (++score >= 3) {
-                                                                var text = '¡Ganaste! ¡Disfruta de tu botín!';
-                                                                drawBackground(background, images.beach, text);
-                                                            }
-                                                        }
-                                                        if (Dificl) {
-                                                            if (++score >= 4) {
-                                                                var text = '¡Ganaste! ¡Disfruta de tu botín!';
-                                                                drawBackground(background, images.beach, text);
-                                                            }
-                                                        }
-                                                        if (WebWorkers) {
-                                                            if (++score >= 6) {
-                                                                var text = '¡Ganaste! ¡Disfruta de tu botín!';
-                                                                drawBackground(background, images.beach, text);
-                                                            }
-                                                        }
-                            */
-                            if (++score >= 6) {
-                                var text = '¡Ganaste! ¡Disfruta de tu botín!';
-                                drawBackground(background, images.beach, text);
+
+                            playAnimalSound(privKey);
+
+                            if (dificultad == 2) {
+                                if (++score >= 2) {
+                                    var text = '🎉¡Ganaste! ¡Disfruta de tu botín!🎉';
+                                    drawBackground(background, images.beach, text);
+                                }
+                            } else if (dificultad == 3) {
+                                if (++score >= 3) {
+                                    var text = '¡Ganaste! ¡Disfruta de tu botín!';
+                                    drawBackground(background, images.beach, text);
+                                }
+                            } else if (dificultad == 4) {
+                                if (++score >= 4) {
+                                    var text = '¡Ganaste! ¡Disfruta de tu botín!';
+                                    drawBackground(background, images.beach, text);
+                                }
+                            } else if (dificultad == 6) {
+                                if (++score >= 6) {
+                                    var text = '¡Ganaste! ¡Disfruta de tu botín!';
+                                    drawBackground(background, images.beach, text);
+                                }
                             }
 
                             // Deshabilita arrastrar y soltar
@@ -264,8 +277,17 @@
 
         }
 
+        function playAnimalSound(animalKey) {
+            var soundElementId = 'sound' + animalKey.charAt(0).toUpperCase() + animalKey.slice(1);
+            var soundElement = document.getElementById(soundElementId);
+
+            if (soundElement) {
+                soundElement.play();
+            }
+        }
+
         // Fuentes de las imágenes Modo Facil
-        var sources1 = {
+        var sourcesFacil = {
             beach: 'beach.png',
             fondo: 'fondo.png',
             lion: 'lion.png',
@@ -277,7 +299,7 @@
         };
 
         // Fuentes de las imágenes Modo Medio
-        var sources2 = {
+        var sourcesMedio = {
             beach: 'beach.png',
             fondo: 'fondo.png',
             lion: 'lion.png',
@@ -292,7 +314,7 @@
         };
 
         // Fuentes de las imágenes Modo Facil Dificil
-        var sources3 = {
+        var sourcesDificil = {
             beach: 'beach.png',
             fondo: 'fondo.png',
             lion: 'lion.png',
@@ -310,7 +332,7 @@
         };
 
         // Fuentes de las imágenes Modo WebWorkers
-        var sources = {
+        var sourcesWebWorkers = {
             beach: 'beach.png',
             fondo: 'fondo.png',
             lion: 'lion.png',
@@ -334,8 +356,17 @@
         };
 
         // Carga las imágenes y llama a la función de inicialización del escenario
-        loadImages(sources, initStage);
+        if (dificultad == 2) {
+            loadImages(sourcesFacil, initStage);
+        } else if (dificultad == 3) {
+            loadImages(sourcesMedio, initStage);
+        } else if (dificultad == 4) {
+            loadImages(sourcesDificil, initStage);
+        } else if (dificultad == 6) {
+            loadImages(sourcesWebWorkers, initStage);
+        }
     </script>
+
 </body>
 
 </html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Gestión Material Deportivo</title>
+    <style>
+        input[type=number] {
+            width: 50px;
+        }
+
+        .oculto {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Gestión Material Deportivo IES Marqués de Comares</h1>
+        <hr>
+        <h2>Identificación:</h2><br>
+        <label for="Profesor">Profesor</label>
+        <input type="text" id="profesor"><br>
+        <label for="Password">Contraseña:</label>
+        <input type="password" id="password"><br>
+        <input type="button" value="Acceder" onclick="validarIdentificacion()">
+        <p></p>
+    </div>
+    <div>
+        <table>
+            <tr>
+                <h2>Gestión Repuestos Deportivos</h2>
+            </tr>
+            <tr>
+                <form name="formulario" action="#" method="get">
+                    Deporte a gestionar:
+                    <select name="tipoDeporte" onchange="mostrarOpciones()">
+                        <option>Fútbol</option>
+                        <option>Baloncesto</option>
+                        <option>Gimnasia</option>
+                    </select><br><br><br>
+
+                    <!-- Contenedor para opciones adicionales -->
+                    <div id="opcionesAdicionales" class="oculto">
+                        <!-- aquí iría el select si hemos elegido fútbol o baloncesto -->
+                        <label for="opcion">Opción:</label>
+                        <select name="opcion">
+                            <option>Nuevo material</option>
+                            <option>Reposición de material</option>
+                        </select><br>
+                        <label for="unidades">Unidades:</label>
+                        <input type="number" name="unidades"><br><br>
+                    </div>
+
+                    <!-- estas serían las casillas de verificación en caso de elegir gimnasia -->
+                    <label for="gimnasia">Materiales: </label><br>
+                    <input type="checkbox" name="aros" value="aros"> Aros<span>&nbsp;&nbsp;Unidades: <input type="text"></span><br>
+                    <input type="checkbox" name="cinta" value="cintas"> Cintas<br>
+                    <input type="checkbox" name="pesas" value="pesas"> Pesas<br>
+                    <input type="checkbox" name="mancuernas" value="mancuernas"> Mancuernas<br>
+                    <br/> <br/>
+
+                    <input type="submit" value="Enviar" id="Enviar1" onclick="enviarFormulario()">
+                    <input type="reset" id="Reset1" value="Limpiar">
+                </form>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        function validarIdentificacion() {
+            var usuario = document.getElementById("profesor").value;
+            var contrasena = document.getElementById("password").value;
+
+            // Validar que tanto el usuario como la contraseña sean obligatorias y cumplan con el formato
+            var regex = /^[a-z0-9\s]+$/;
+            if (usuario.trim() === "" || contrasena.trim() === "" || !regex.test(usuario) || !regex.test(contrasena)) {
+                alert("Usuario y contraseña son obligatorios. Solo letras minúsculas sin acento, números y espacios son permitidos.");
+            } else {
+                // Mostrar el formulario de gestión de repuestos
+                document.querySelector('form[name="formulario"]').style.display = 'block';
+            }
+        }
+
+        function mostrarOpciones() {
+            var deporteSeleccionado = document.getElementsByName("tipoDeporte")[0].value;
+            var opcionesAdicionales = document.getElementById("opcionesAdicionales");
+
+            // Mostrar opciones adicionales solo si se elige fútbol o baloncesto
+            if (deporteSeleccionado === "Fútbol" || deporteSeleccionado === "Baloncesto") {
+                opcionesAdicionales.style.display = 'block';
+            } else {
+                opcionesAdicionales.style.display = 'none';
+            }
+        }
+
+        function enviarFormulario() {
+            // Inhabilitar los botones
+            document.getElementById("Enviar1").disabled = true;
+            document.getElementById("Reset1").disabled = true;
+
+            // Mostrar por consola lo elegido mediante el formulario
+            var formulario = document.forms["formulario"];
+            console.log("Deporte seleccionado: " + formulario["tipoDeporte"].value);
+
+            if (formulario["tipoDeporte"].value === "Fútbol" || formulario["tipoDeporte"].value === "Baloncesto") {
+                console.log("Opción seleccionada: " + formulario["opcion"].value);
+                console.log("Unidades a adquirir o reponer: " + formulario["unidades"].value);
+            } else if (formulario["tipoDeporte"].value === "Gimnasia") {
+                console.log("Materiales seleccionados:");
+
+                var materiales = ["aros", "cinta", "pesas", "mancuernas"];
+                for (var i = 0; i < materiales.length; i++) {
+                    if (formulario[materiales[i]].checked) {
+                        console.log(materiales[i] + ", Unidades: " + formulario[materiales[i] + "_unidades"].value);
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

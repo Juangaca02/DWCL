@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Reservas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+    }
+
+    #reserva-info {
+        margin-top: 20px;
+    }
+</style>
+
+<body>
+    <h1>Gestión de Reservas de Aulas</h1>
+    <label for="aulaInput">Aula:</label>
+    <input type="text" id="aulaInput"><br>
+    <label for="profesorInput">Profesor:</label>
+    <input type="text" id="profesorInput"><br>
+    <label for="diaInput">Día:</label>
+    <input type="text" id="diaInput"><br>
+    <label for="horaInput">Hora:</label>
+    <input type="text" id="horaInput"><br>
+    <button onclick="realizarReserva()">Realizar Reserva</button>
+    <button onclick="aumentarTiempo()">Aumentar Tiempo</button>
+
+    <div id="reserva-info"></div>
+
+    <script src="Ejercicio4.js"></script>
+</body>
+
+</html>
