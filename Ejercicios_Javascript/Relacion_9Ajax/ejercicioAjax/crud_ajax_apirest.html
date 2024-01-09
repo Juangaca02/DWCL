@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD API REST AJAX</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+    <h1>CRUD API REST AJAX</h1>
+    <section class="crud">
+        <div>
+            <h2 class="crud-titulo">Agregar Lunas Nueva</h2>
+            <form class="crud-form">
+                <input type="text" name="categoria" placeholder="Categoria" required>
+                <br>
+                <input type="text" name="nombre" placeholder="Nombre" required>
+                <br>
+                <input type="submit" value="Enviar">
+                <input type="hidden" name="id">
+            </form>
+        </div>
+        <div>
+            <h2>Lunas Crecientes</h2>
+            <table class="crud-table" border=1>
+                <thead>
+                    <tr>
+                        <th>Categoria</th>
+                        <th>Nombre</th>
+                        <th>Operación</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <template id="crud-template">
+        <tr>
+            <td class="categoria"></td>
+            <td class="nombre"></td>
+            <td>
+                <button class="edit" id="editar">Editar</button>
+                <button class="delete" id="borrar">Eliminar</button>
+            </td>
+        </tr>
+    </template>
+    <script src="js/crud_ajax_apirest.js">
+    </script>
+</body>
+
+</html>
