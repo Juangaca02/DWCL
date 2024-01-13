@@ -1,19 +1,3 @@
-/* 
-Para usar jsonPlaceholder como una API REST falsa para simular el funcionamiento de una BD,
-lo primero que debemos de tener es nodejs, por tanto, habrá que seguir los pasos:
-1) Visitar nodejs.org y descargar la versión que deseemmos o necesitemos
-2) Instalar nodejs que hemos descargado
-3) Podemos comprobar si se ha instalado bien desde el terminal de windows o del de Visual Studio Code con node -v 
-4) Entrar en la página jsonPlaceholder que es la API que vamos a usar y enlazar con json-serve
-5) Acceder y abajo viene como instalar json-serve para poder simular la API REST
-6) Comando de instalación con el gestor de paquetes npm de nodejs: npm install -g json-server
-7) Descargar la versión core de insomnia para manejar la API Falsa ( https://insomnia.rest/download/)
-8) Iniciar insomnia
-9) Ejecutar desde un terminal de visual estudio code: json-server -w -p puerto json, donde puerto
-    por defecto es el 3333, pero podemos elegir otro para evitar conflictos, ej. 5555,
-    y donde json es el objeto json a usar
-10) Realizar las peticiones y pruebas necesarias
-*/
 const d = document,
     $table = d.querySelector(".crud-table"),
     $form = d.querySelector(".crud-form"),
@@ -23,18 +7,23 @@ const d = document,
 
 const getAll = async () => {
     try {
-        let respuesta = await axios.get("http://localhost:5555/primero"),
+        let respuesta = await axios.get("http://localhost:5555/Pilares"),
             json = await respuesta.data;
 
         console.log(json);
 
         json.forEach((el) => {
-            $template.querySelector(".modulo").textContent = el.modulo;
-            $template.querySelector(".profesor").textContent = el.profesor;
+            $template.querySelector(".categoria").textContent = el.categoria;
+            $template.querySelector(".nombre").textContent = el.nombre;
+            $template.querySelector(".estiloCombate").textContent = el.estiloCombate;
+
             $template.querySelector(".edit").dataset.id = el.id;
-            $template.querySelector(".edit").dataset.modulo = el.modulo;
-            $template.querySelector(".edit").dataset.profesor = el.profesor;
+            $template.querySelector(".edit").dataset.categoria = el.categoria;
+            $template.querySelector(".edit").dataset.nombre = el.nombre;
+            $template.querySelector(".edit").dataset.estiloCombate = el.estiloCombate;
+
             $template.querySelector(".delete").dataset.id = el.id;
+            $template.querySelector(".delete").dataset.nombre = el.nombre;
 
             let $clone = d.importNode($template, true);
             $fragment.appendChild($clone);
@@ -63,11 +52,12 @@ d.addEventListener("submit", async (e) => {
                     method: "POST",
                     headers: { "Content-type": "application/json; charset=utf-8" },
                     data: JSON.stringify({
-                        modulo: e.target.modulo.value,
-                        profesor: e.target.profesor.value,
+                        categoria: e.target.categoria.value,
+                        nombre: e.target.nombre.value,
+                        estiloCombate: e.target.estiloCombate.value,
                     })
                 };
-                let respuesta = await axios("http://localhost:5555/primero", options);
+                let respuesta = await axios("http://localhost:5555/Pilares", options);
                 let json = await respuesta.data;
 
                 location.reload();
@@ -79,17 +69,17 @@ d.addEventListener("submit", async (e) => {
                 );
             }
         } else {
-            //Update - PUT
             try {
                 let options = {
                     method: "PUT",
                     headers: { "Content-type": "application/json; charset=utf-8" },
                     data: JSON.stringify({
-                        modulo: e.target.modulo.value,
-                        profesor: e.target.profesor.value,
+                        categoria: e.target.categoria.value,
+                        nombre: e.target.nombre.value,
+                        estiloCombate: e.target.estiloCombate.value,
                     }),
                 };
-                let respuesta = await axios(`http://localhost:5555/primero/${e.target.id.value}`, options);
+                let respuesta = await axios(`http://localhost:5555/Pilares/${e.target.id.value}`, options);
                 let json = await respuesta.data;
 
                 location.reload();
@@ -101,34 +91,34 @@ d.addEventListener("submit", async (e) => {
                 );
             }
         }
-        //resetear los campos del formulario una vez editado un registro
-        $form.modulo.value = null;
-        $form.profesor.value = null;
+        $form.categoria.value = null;
+        $form.nombre.value = null;
+        $form.estiloCombate.value = null;
         $form.id.value = null;
     }
 });
 
 d.addEventListener("click", async (e) => {
     if (e.target.matches(".edit")) {
-        $titulo.textContent = "Editar Santo";
-        $form.modulo.value = e.target.dataset.modulo;
-        $form.profesor.value = e.target.dataset.profesor;
+        $titulo.textContent = "Editar Pilar";
+        $form.categoria.value = e.target.dataset.categoria;
+        $form.nombre.value = e.target.dataset.nombre;
+        $form.estiloCombate.value = e.target.dataset.estiloCombate;
         $form.id.value = e.target.dataset.id;
     }
 
     if (e.target.matches(".delete")) {
         let isDelete = confirm(
-            `¿Estás seguro de eliminar el id ${e.target.dataset.id}?`
+            `¿Estás seguro de eliminar a ${e.target.dataset.nombre}?`
         );
 
         if (isDelete) {
-            //Delete - DELETE
             try {
                 let options = {
                     method: "DELETE",
                     headers: { "Content-type": "application/json; charset=utf-8" },
                 };
-                let respuesta = await axios(`http://localhost:5555/primero/${e.target.dataset.id}`, options);
+                let respuesta = await axios(`http://localhost:5555/Pilares/${e.target.dataset.id}`, options);
                 let json = await respuesta.data;
 
                 location.reload();

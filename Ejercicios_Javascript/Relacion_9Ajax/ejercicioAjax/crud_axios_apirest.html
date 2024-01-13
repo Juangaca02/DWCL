@@ -5,29 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRUD API REST AXIOS</title>
+    <link rel="stylesheet" href="./css/index.css">
 </head>
 
 <body>
     <h1>CRUD API REST AXIOS</h1>
     <section class="crud">
         <div>
-            <h2 class="crud-titulo">Agregar Módulos de primero</h2>
+            <h2 class="crud-titulo">Agregar Pilar</h2>
             <form class="crud-form">
-                <input type="text" name="modulo" placeholder="Módulo" required>
+                <input type="text" name="categoria" placeholder="Categoria" required>
                 <br>
-                <input type="text" name="profesor" placeholder="Profesor" required>
+                <input type="text" name="nombre" placeholder="Nombre" required>
+                <br>
+                <input type="text" name="estiloCombate" placeholder="Estilo Combate" required>
                 <br>
                 <input type="submit" value="Enviar">
                 <input type="hidden" name="id">
             </form>
         </div>
         <div>
-            <h2>Módulos 1º DAW</h2>
-            <table class="crud-table">
+            <h2>Caracteristicas de los Pilares</h2>
+            <table class="crud-table" border="1">
                 <thead>
                     <tr>
-                        <th>Módulo</th>
-                        <th>Profesor</th>
+                        <th>Categoria</th>
+                        <th>Nombre</th>
+                        <th>Estilo de Combate</th>
                         <th>Operaciones</th>
                     </tr>
                 </thead>
@@ -37,8 +41,9 @@
     </section>
     <template id="crud-template">
         <tr>
-            <td class="modulo"></td>
-            <td class="profesor"></td>
+            <td class="categoria"></td>
+            <td class="nombre"></td>
+            <td class="estiloCombate"></td>
             <td>
                 <button class="edit">Editar</button>
                 <button class="delete">Eliminar</button>
@@ -46,9 +51,7 @@
         </tr>
     </template>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js"></script>
-    <script src="js/crud_axios_apirest.js">
-
-    </script>
+    <script src="js/crud_axios_apirest.js"></script>
 </body>
 
 </html>
